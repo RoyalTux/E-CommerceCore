@@ -40,19 +40,36 @@ namespace ECommerceCore.ModelBuilders
             builder.Property(x => x.Quantity)
                 .IsRequired();
 
-            builder.HasData(
-                new Product
-                {
-                    Id = 1,
-                    Title = "Electric Samurai —  Mix Jan 2019",
-                    Album = "Summer Vibes",
-                    Artist = "Electric Samurai",
-                    Description = "Chill music",
-                    Genre = "Trance",
-                    Price = 5,
-                    Quantity = 12,
-                    ReleaseDate = DateTime.Now,
-                });
+            builder.HasOne(x => x.Category);
+
+            //builder.HasData(
+            //    new Product
+            //    {
+            //        Id = 1,
+            //        Title = "Electric Samurai —  Mix Jan 2019",
+            //        Album = "Summer Vibes",
+            //        Artist = "Electric Samurai",
+            //        Description = "Chill music",
+            //        Genre = "Trance",
+            //        Price = 5,
+            //        Quantity = 12,
+            //        ReleaseDate = DateTime.Now,
+            //        Category = new Category{Id = 1},
+            //    });
+
+            builder.HasData(new
+            {
+                Id = 1,
+                Title = "Electric Samurai —  Mix Jan 2019",
+                Album = "Summer Vibes",
+                Artist = "Electric Samurai",
+                Description = "Chill music",
+                Genre = "Trance",
+                Price = 5.3,
+                Quantity = 12,
+                ReleaseDate = DateTime.Now,
+                CategoryId = 1,
+            });
         }
     }
 }

@@ -4,14 +4,16 @@ using ECommerceCore.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ECommerceCore.Migrations
 {
     [DbContext(typeof(ECommerceDbContext))]
-    partial class ECommerceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191128153043_AddedCategories")]
+    partial class AddedCategories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,13 +38,6 @@ namespace ECommerceCore.Migrations
                     b.HasIndex("ParentId");
 
                     b.ToTable("Category");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Trance"
-                        });
                 });
 
             modelBuilder.Entity("ECommerceCore.Models.Product", b =>
@@ -91,12 +86,11 @@ namespace ECommerceCore.Migrations
                             Id = 1,
                             Album = "Summer Vibes",
                             Artist = "Electric Samurai",
-                            CategoryId = 1,
                             Description = "Chill music",
                             Genre = "Trance",
-                            Price = 5.2999999999999998,
+                            Price = 5.0,
                             Quantity = 12,
-                            ReleaseDate = new DateTime(2019, 11, 28, 18, 37, 12, 714, DateTimeKind.Local).AddTicks(1240),
+                            ReleaseDate = new DateTime(2019, 11, 28, 17, 30, 42, 960, DateTimeKind.Local).AddTicks(1778),
                             Title = "Electric Samurai —  Mix Jan 2019"
                         });
                 });
@@ -111,7 +105,7 @@ namespace ECommerceCore.Migrations
             modelBuilder.Entity("ECommerceCore.Models.Product", b =>
                 {
                     b.HasOne("ECommerceCore.Models.Category", "Category")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("CategoryId");
                 });
 #pragma warning restore 612, 618
