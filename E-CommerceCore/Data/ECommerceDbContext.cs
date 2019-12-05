@@ -1,4 +1,4 @@
-﻿using ECommerceCore.ModelBuilders;
+﻿using ECommerceCore.EntityConfigurations;
 using ECommerceCore.Models;
 using Microsoft.EntityFrameworkCore;
 

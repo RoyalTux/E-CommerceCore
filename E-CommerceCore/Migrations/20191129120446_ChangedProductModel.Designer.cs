@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerceCore.Migrations
 {
     [DbContext(typeof(ECommerceDbContext))]
-    [Migration("20191128144707_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20191129120446_ChangedProductModel")]
+    partial class ChangedProductModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,38 @@ namespace ECommerceCore.Migrations
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("ECommerceCore.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<int?>("ParentId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("Category");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 201,
+                            Name = "Trance"
+                        },
+                        new
+                        {
+                            Id = 202,
+                            Name = "PsychoTrance",
+                            ParentId = 201
+                        });
+                });
 
             modelBuilder.Entity("ECommerceCore.Models.Product", b =>
                 {
@@ -34,6 +66,8 @@ namespace ECommerceCore.Migrations
                     b.Property<string>("Artist")
                         .IsRequired()
                         .HasMaxLength(60);
+
+                    b.Property<int>("CategoryId");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -55,21 +89,39 @@ namespace ECommerceCore.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Product");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = 101,
                             Album = "Summer Vibes",
                             Artist = "Electric Samurai",
+                            CategoryId = 201,
                             Description = "Chill music",
                             Genre = "Trance",
                             Price = 5.0,
                             Quantity = 12,
-                            ReleaseDate = new DateTime(2019, 11, 28, 16, 47, 7, 251, DateTimeKind.Local).AddTicks(1953),
+                            ReleaseDate = new DateTime(2019, 11, 29, 14, 4, 46, 259, DateTimeKind.Local).AddTicks(6179),
                             Title = "Electric Samurai —  Mix Jan 2019"
                         });
+                });
+
+            modelBuilder.Entity("ECommerceCore.Models.Category", b =>
+                {
+                    b.HasOne("ECommerceCore.Models.Category", "ParentCategory")
+                        .WithMany("SubCategories")
+                        .HasForeignKey("ParentId");
+                });
+
+            modelBuilder.Entity("ECommerceCore.Models.Product", b =>
+                {
+                    b.HasOne("ECommerceCore.Models.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

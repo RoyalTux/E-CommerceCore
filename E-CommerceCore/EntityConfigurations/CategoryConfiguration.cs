@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace ECommerceCore.ModelBuilders
+namespace ECommerceCore.EntityConfigurations
 {
     public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
@@ -15,15 +15,12 @@ namespace ECommerceCore.ModelBuilders
                 .HasForeignKey(x => x.ParentId)
                 .IsRequired(false);
 
+            //builder.HasMany(x => x.Products)
+            //    .WithOne(x => x.Category);
+
             builder.Property(x => x.Name)
                 .HasMaxLength(100)
                 .IsRequired();
-
-            var tranceCategory = new Category
-            {
-                Id = 101,
-                Name = "Trance",
-            };
 
             //var psychoTranceCategory = new Category
             //{
@@ -32,7 +29,7 @@ namespace ECommerceCore.ModelBuilders
             //    ParentId = tranceCategory.Id,
             //};
 
-            builder.HasData(new
+            builder.HasData(new Category
             {
                 Id = 1,
                 Name = "Trance",

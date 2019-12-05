@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceCore.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase

@@ -4,14 +4,16 @@ using ECommerceCore.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ECommerceCore.Migrations
 {
     [DbContext(typeof(ECommerceDbContext))]
-    partial class ECommerceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191129093512_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,32 +97,8 @@ namespace ECommerceCore.Migrations
                             Genre = "Trance",
                             Price = 5.0,
                             Quantity = 12,
-                            ReleaseDate = new DateTime(2019, 12, 5, 14, 22, 58, 659, DateTimeKind.Local).AddTicks(3034),
+                            ReleaseDate = new DateTime(2019, 11, 29, 11, 35, 12, 362, DateTimeKind.Local).AddTicks(834),
                             Title = "Electric Samurai —  Mix Jan 2019"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Album = "Summer Vibes",
-                            Artist = "SHIVA BLEZE",
-                            Description = "Psy trance music",
-                            Genre = "Trance",
-                            Price = 6.0,
-                            Quantity = 14,
-                            ReleaseDate = new DateTime(2019, 12, 5, 14, 22, 58, 661, DateTimeKind.Local).AddTicks(2620),
-                            Title = "SHIVA MANTRA VS PSY TRANCE BY SHIVA BLEZE"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Album = "Trippy Experience",
-                            Artist = "Electric Samurai",
-                            Description = "Psychedelic Progressive",
-                            Genre = "Trance",
-                            Price = 7.0,
-                            Quantity = 16,
-                            ReleaseDate = new DateTime(2019, 12, 5, 14, 22, 58, 661, DateTimeKind.Local).AddTicks(2637),
-                            Title = "Trippy Experience | Psychedelic Progressive Psy Trance Mix"
                         });
                 });
 

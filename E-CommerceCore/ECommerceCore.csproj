@@ -7,17 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20191128155830_AddedSeedToCategories.cs" />
-    <Compile Remove="Migrations\20191128155830_AddedSeedToCategories.Designer.cs" />
-    <Compile Remove="Migrations\20191128160213_RemovedSeedInCategories.cs" />
-    <Compile Remove="Migrations\20191128160213_RemovedSeedInCategories.Designer.cs" />
-    <Compile Remove="Migrations\20191128161414_AddedSeedToCategories.cs" />
-    <Compile Remove="Migrations\20191128161414_AddedSeedToCategories.Designer.cs" />
-    <Compile Remove="Migrations\20191128161619_AddedSeedToCategories.cs" />
-    <Compile Remove="Migrations\20191128161619_AddedSeedToCategories.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
